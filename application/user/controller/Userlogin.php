@@ -29,7 +29,7 @@ class Userlogin extends Controller
             return json_encode($msg);
         }else{
             //执行查询
-            
+
         }
         //确认登陆，返回信息
 
