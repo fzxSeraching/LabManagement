@@ -16,5 +16,6 @@ Route::get('think', function () {
 Route::get('hello/:name', 'index/hello');
 Route::get('signin', 'user/Userlogin/signin');
 Route::get('verify', 'user/Userlogin/verify');
-//Route::get('aindex', 'admin/Index/index');
+Route::get('aindex', 'admin/Index/index');
+Route::get('alogin', 'admin/Index/login');
 
