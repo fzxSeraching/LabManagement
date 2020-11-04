@@ -8,28 +8,84 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\User;
 use think\Controller;
 use think\Db;
 use think\Request;
+use app\admin\controller\common;
 
 
 class Login extends Controller
 {
     // 登录
-    public function signin(Request $request){
-        $data = $request->param('data');
-        $user = User::where('user_name', $data)->find();
-//        $user = Db::table('lab_user')->select();
-        var_dump($user);
+    public function signin()
+    {
+        $username = I('email');//用户名
+        $password = I('password');//密码
+        if (empty($username)) {
+            exit(json_encode(['code' => 400, 'msg' => '请填写用户名']));
+        }
+        if (empty($password)) {
+            $where = "user_email = '$username'";
+            $result = Db::name('usr')->where($where)->field('user_email')->find();
+            if ($result) {
+                exit(json_encode(['code' => 200, 'msg' => '登录成功', 'data' => $result]));
+            } else {
+                exit(json_encode(['code' => 400, 'msg' => '登录失败,账号或密码错误', 'data' => '']));
+            }
+        } else {
+            //两种加密方式：LAB+密码；密码+用户名
+            $tp_psw = md5(utf8_encode('LAB' . $password));
+            $psw = md5(utf8_encode($password . $username));
+            $where = "(user_name = '$username') and (user_pws = '$tp_psw' or user_pws = '$psw' )";
+            $result = Db::name('usr')->whereor($where)->field('user_name,user_pws')->find();
+            if ($result) {
+                exit(json_encode(['code' => 200, 'msg' => '登录成功', 'data' => $result]));
+            } else {
+                exit(json_encode(['code' => 400, 'msg' => '登录失败,账号或密码错误', 'data' => '']));
+            }
+        }
     }
 
     // 忘记密码
-    public function forget(){
+    public function forget()
+    {
 
+    }
+
+    // 设定用户信息
+    public function register(Request $request)
+    {
+        $email = $request->param('email');//用户名
+        $password = $request->param('password');//密码
+        $username = $request->param('username');//用户名
+        $user_id = Db::name('user')->max('user_id') + 1;
+        $insetdata = [
+            'user_id' => $user_id,
+            'user_name' => $username,
+            'user_pws' => $password,
+            'user_email' => $email
+        ];
+        $insert = Db::name('user')->insert($insetdata);
+        $this->ajaxreturn(200,'成功',$insert);
     }
 
     // 登出
-    public function logout(){
+    public function logout()
+    {
 
     }
+
+    // 测试
+    public function test(){
+        $user = new User;
+//        $user->user_name = "123";
+//        $user->user_id = "123";
+//        $user->user_pws = "123";
+//        $user->save();
+        $user = User::get(1);
+        dump($user);
+//        echo $user->user_name;
+    }
+
 }
