@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "f776327b-0cd3-48f4-95a7-344b1f6a87ea",
+		"name": "Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.lab.com/signin",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.lab.com/test",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allstu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.lab.com/allstu",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"allstu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addstu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "测试仔",
+							"type": "text"
+						},
+						{
+							"key": "useremail",
+							"value": "000@test.com",
+							"type": "text"
+						},
+						{
+							"key": "userrole",
+							"value": "R000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.lab.com/addstu",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"addstu"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

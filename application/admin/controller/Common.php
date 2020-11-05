@@ -13,10 +13,27 @@ use think\Controller;
 
 class Common extends Controller
 {
-    public function ajaxreturn($code,$msg,$data){
-        $data['msg'] = $msg;
-        $data['code'] = $code;
-        $data ? $data['info'] = $data : $data['info'] = null;
-        exit(json_encode($data));
+
+    public function initialize()
+    {
+        parent::initialize();
     }
+
+    // 返回函数
+    public function ajaxreturn($code, $msg, $data)
+    {
+        if ($data){
+            $info['msg'] = $msg;
+            $info['code'] = $code;
+            $info['info'] = $data;
+            exit(json_encode($info));
+        }else{
+            $info['msg'] = "失败";
+            $info['code'] = 400;
+            exit(json_encode($info));
+        }
+    }
+
+    // 数据的导入导出
+
 }

@@ -6,7 +6,7 @@
  * Date: 2020-11-04
  * Time: 16:40
  */
-namespace app\common;
+namespace app\admin\model;
 
 use think\Model;
 
@@ -31,7 +31,7 @@ class baseModel extends Model
      */
     public function editData($map, $data)
     {
-        $result = $this->where($map)->save($data);
+        $result = $this->save($data,$map);
         return $result;
     }
 
@@ -49,7 +49,6 @@ class baseModel extends Model
     /**
      * @return mixed 返回所有数据
      */
-
     public function selectAllData()
     {
         $result = $this->select();
@@ -60,7 +59,6 @@ class baseModel extends Model
      * @param $where
      * @return array 返回所有符合条件的数据
      */
-
     public function selectWhereData($where = '1=1')
     {
         $result = $this->where($where)->select();
@@ -72,7 +70,6 @@ class baseModel extends Model
      * @param $order 排序字段
      * @return array  返回根据特定条件排序的符合条件数据
      */
-
     public function selectWhereOrderData($where = '1=1', $order = 'id')
     {
         $result = $this->where($where)->order($order)->select();
@@ -85,12 +82,20 @@ class baseModel extends Model
      * @param int $length 返回数据量
      * @return array  返回符合长度的数据量
      */
-
     public function selectWhereLimitData($where = '1=1', $offset = 0, $length = 10)
     {
         $result = $this->where($where)->limit($offset, $length)->select();
         return $result;
     }
 
+    /*
+     *
+     * where 想要查询的字段
+     * */
+    public function selectMaxData($where = 'id')
+    {
+        $result = $this->max($where);
+        return $result;
+    }
 
 }
