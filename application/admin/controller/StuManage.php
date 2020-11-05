@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use app\admin\model\User;
 use think\Request;
+use app\admin\controller\Office;
 
 class StuManage extends Common
 {
@@ -46,6 +47,13 @@ class StuManage extends Common
     // 导出到excel
     public function outStuWithExcel()
     {
+        $excel = new Office();
+
+        $data = $this->user->selectWhereData("user_role = 'R001'");
+        $head = ['id', 'user_name', 'user_email', 'user_role'];
+        $keys = ['id', 'user_name', 'user_email', 'user_role'];
+
+        $excel->outdata('学生信息表', $data, $head, $keys);
     }
 
     // 学生的删除
