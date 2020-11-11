@@ -10,6 +10,9 @@ namespace app\admin\controller;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+
 
 class Office extends Common
 {
@@ -36,12 +39,10 @@ class Office extends Common
         /*--------------开始从数据库提取信息插入Excel表中------------------*/
         foreach ($data as $key => $item) {             //循环设置单元格：
             //$key+2,因为第一行是表头，所以写到表格时   从第二行开始写
-
             for ($i = 65; $i < $count + 65; $i++) {     //数字转字母从65开始：
                 $sheet->setCellValue(strtoupper(chr($i)) . ($key + 2), $item[$keys[$i - 65]]);
                 $spreadsheet->getActiveSheet()->getColumnDimension(strtoupper(chr($i)))->setWidth(20); //固定列宽
             }
-
         }
 
         header('Content-Type: application/vnd.ms-excel');
@@ -55,4 +56,5 @@ class Office extends Common
         unset($spreadsheet);
         exit;
     }
+
 }

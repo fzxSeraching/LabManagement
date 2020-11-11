@@ -24,6 +24,17 @@ class baseModel extends Model
     }
 
     /**
+     * 批量添加数据
+     * @param    array $data 数据
+     * @return   integer           新增数据的id
+     */
+    public function addBatchData($data)
+    {
+        $id = $this->insertAll($data);
+        return $id;
+    }
+
+    /**
      * 修改数据
      * @param    array $map where语句数组形式
      * @param    array $data 修改的数据

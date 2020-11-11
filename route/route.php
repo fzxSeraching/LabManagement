@@ -21,3 +21,4 @@ Route::get('allstu', 'admin/StuManage/showAllStu');
 Route::get('excelout', 'admin/StuManage/outStuWithExcel');
 Route::post('addstu', 'admin/StuManage/addStu');
 Route::post('editstu', 'admin/StuManage/editStu');
+Route::post('excelin', 'admin/StuManage/addStuWithExcel');
