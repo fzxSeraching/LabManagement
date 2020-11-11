@@ -13,7 +13,7 @@ use think\Request;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 
-class StuManage extends Common
+class Manage extends Common
 {
 
     private $user;
@@ -23,13 +23,14 @@ class StuManage extends Common
         $this->user = new User();
     }
 
-    // 学生的增加
+    // 用户的增加
     public function addStu(Request $request)
     {
         $username = $request->param('username');
-        $userid = $this->user->selectMaxData('user_id') + 1;
-        $useremail = $request->param('useremail');
         $userrole = $request->param('userrole');
+        $userid = $this->user->selectMaxData('user_id', "user_role=$userrole") + 1;
+        $useremail = $request->param('useremail');
+
         $data = [
             'user_name' => $username,
             'user_id' => $userid,
@@ -105,18 +106,42 @@ class StuManage extends Common
     }
 
     // 导出到excel
-    public function outStuWithExcel()
+    public function outStuWithExcel(Request $request)
     {
         $excel = new Office();
+        $role = $request->param('role');
+        $where = [["id", ">", "0"]];
+        if ($role) {
+            array_push($where, ["user_role", "=", $role]);
+        }
 
-        $data = $this->user->selectWhereData("id >0");
+        $data = $this->user->selectWhereData($where);
         $head = ['id', 'user_name', 'user_email', 'user_role'];
         $keys = ['id', 'user_name', 'user_email', 'user_role'];
 
-        $excel->outdata('学生信息表', $data, $head, $keys);
+        switch ($role) {
+            case "R00":
+                $msg = '学生信息表';
+                break;
+            case "R002":
+                $msg = '教师信息表';
+                break;
+            case "R003":
+                $msg = '管理员信息表';
+                break;
+            case "R004":
+                $msg = '维修人员信息表';
+                break;
+            case "R005":
+                $msg = '主任信息表';
+                break;
+            default:
+                $msg = "用户";
+        }
+        $excel->outdata($msg, $data, $head, $keys);
     }
 
-    // 学生的删除
+    // 用户删除
     public function deleteStu(Request $request)
     {
         $data = $request->param('data');
@@ -125,7 +150,7 @@ class StuManage extends Common
         $this->ajaxreturn(200, "删除成功", $result);
     }
 
-    // 学生的修改
+    // 用户修改
     public function editStu(Request $request)
     {
         $id = $request->param('id');
@@ -137,15 +162,25 @@ class StuManage extends Common
         $this->ajaxreturn(200, "修改成功", $result);
     }
 
-    // 查找全部学生
+    // 查找全部
     public function showAllStu(Request $request)
     {
         $data = $request->param('data');
-        if ($data) {
-        } else {
-            $result = $this->user->selectWhereData("user_role = 'R001'");
-            $this->ajaxreturn(200, "查找成功", $result);
+        $role = $request->param('role');
+
+        $where = [["id", ">", "0"]];
+        if ($role) {
+            array_push($where, ["user_role", "=", $role]);
         }
+
+        $result = $this->user->selectWhereData($where);
+        if ($result) {
+            $this->ajaxreturn(200, "查找成功", $result);
+        } else {
+            $this->ajaxreturn(400, "查找失败", $result);
+        }
+
+
     }
 
 }

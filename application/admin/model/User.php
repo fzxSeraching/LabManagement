@@ -12,10 +12,16 @@ use app\admin\model\BaseModel;
 
 class User extends BaseModel
 {
-    public function selectWhereData($where = '1=1')
+    public function selectWhereData($where = [])
     {
         $result = $this->where($where)->select();
         $re = $result->hidden(['user_pws']);
         return $re;
+    }
+
+    public function selectMaxData($max = 'id',$where)
+    {
+        $result = $this->where($where)->max($max);
+        return $result;
     }
 }
