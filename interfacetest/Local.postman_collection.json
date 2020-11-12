@@ -104,6 +104,79 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "editstu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "26",
+							"type": "text"
+						},
+						{
+							"key": "data",
+							"value": "{\"user_name\":\"测试大哥\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.lab.com/editstu",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"editstu"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "26",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "excelout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.lab.com/excelout",
+					"protocol": "http",
+					"host": [
+						"www",
+						"lab",
+						"com"
+					],
+					"path": [
+						"excelout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "excelint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
