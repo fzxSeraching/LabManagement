@@ -25,3 +25,6 @@ Route::post('editstu', 'admin/StuManage/editStu');
 Route::post('excelin', 'admin/StuManage/addStuWithExcel');
 // 公告管理
 Route::post('addnotice', 'admin/Notic/addNotice');
+Route::get('deletenotice', 'admin/Notic/deleteNotice');
+Route::post('editnotice', 'admin/Notic/editNotice');
+Route::get('searchnotice', 'admin/Notic/searchNotice');
