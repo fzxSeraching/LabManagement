@@ -78,14 +78,15 @@ class Login extends Controller
 
     // 测试
     public function test(){
-        $user = new User;
+//        $user = new User;
 //        $user->user_name = "123";
 //        $user->user_id = "123";
 //        $user->user_pws = "123";
 //        $user->save();
-        $user = User::get(1);
-        dump($user);
+//        $user = User::get(1);
+//        dump($user);
 //        echo $user->user_name;
+        echo chr(66);
     }
 
 }

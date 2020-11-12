@@ -42,7 +42,7 @@ class baseModel extends Model
      */
     public function editData($map, $data)
     {
-        $result = $this->save($data,$map);
+        $result = $this->save($data, $map);
         return $result;
     }
 
@@ -84,6 +84,17 @@ class baseModel extends Model
     public function selectWhereOrderData($where = '1=1', $order = 'id')
     {
         $result = $this->where($where)->order($order)->select();
+        return $result;
+    }
+
+    /**
+     * @param string $where 条件
+     * @param $order 排序字段
+     * @return array  返回根据特定条件排序的符合条件数据
+     */
+    public function selectWhereLikeData($one, $two)
+    {
+        $result = $this->whereLike($one, $two)->select();
         return $result;
     }
 

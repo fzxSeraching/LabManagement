@@ -10,7 +10,7 @@ namespace app\admin\model;
 
 use app\admin\model\BaseModel;
 
-class User extends BaseModel
+class UserModel extends BaseModel
 {
     public function selectWhereData($where = [])
     {
@@ -19,7 +19,7 @@ class User extends BaseModel
         return $re;
     }
 
-    public function selectMaxData($max = 'id',$where)
+    public function selectMaxData($max = 'id', $where)
     {
         $result = $this->where($where)->max($max);
         return $result;
