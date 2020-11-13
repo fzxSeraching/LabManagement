@@ -25,12 +25,12 @@ class Common extends Controller
     // 返回函数
     public function ajaxreturn($code, $msg, $data)
     {
-        if ($data){
+        if ($data) {
             $info['msg'] = $msg;
             $info['code'] = $code;
             $info['info'] = $data;
             exit(json_encode($info));
-        }else{
+        } else {
             $info['msg'] = "失败";
             $info['code'] = 400;
             exit(json_encode($info));
@@ -120,4 +120,5 @@ class Common extends Controller
             return $data;
         }
     }
+
 }

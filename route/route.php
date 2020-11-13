@@ -25,6 +25,11 @@ Route::post('editstu', 'admin/StuManage/editStu');
 Route::post('excelin', 'admin/StuManage/addStuWithExcel');
 // 公告管理
 Route::post('addnotice', 'admin/Notic/addNotice');
-Route::get('deletenotice', 'admin/Notic/deleteNotice');
 Route::post('editnotice', 'admin/Notic/editNotice');
+Route::get('deletenotice', 'admin/Notic/deleteNotice');
 Route::get('searchnotice', 'admin/Notic/searchNotice');
+// 设备管理
+Route::post('addfacility', 'admin/Notic/addFacility');
+Route::post('editfacility', 'admin/Notic/editFacility');
+Route::get('deletefacility', 'admin/Notic/deleteFacility');
+Route::get('selectfacility', 'admin/Notic/selectFacility');

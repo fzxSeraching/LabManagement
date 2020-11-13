@@ -50,7 +50,7 @@ class Manage extends Common
         $this->ajaxreturn(200, "导入成功", $aa);
     }
 
-// 导出到excel
+    // 导出到excel
     public function outStuWithExcel(Request $request)
     {
         $excel = new Office();
@@ -87,9 +87,8 @@ class Manage extends Common
         $this->ajaxreturn(200, "导出成功", $result = true);
     }
 
-// 用户删除
-    public
-    function deleteStu(Request $request)
+    // 用户删除
+    public function deleteStu(Request $request)
     {
         $data = $request->param('data');
         $dataarray = ['in', $data];
@@ -97,9 +96,8 @@ class Manage extends Common
         $this->ajaxreturn(200, "删除成功", $result);
     }
 
-// 用户修改
-    public
-    function editStu(Request $request)
+    // 用户修改
+    public function editStu(Request $request)
     {
         $id = $request->param('id');
         // 传入json数据，
@@ -110,9 +108,8 @@ class Manage extends Common
         $this->ajaxreturn(200, "修改成功", $result);
     }
 
-// 查找全部
-    public
-    function showAllStu(Request $request)
+    // 查找全部
+    public function showAllStu(Request $request)
     {
         $data = $request->param('data');
         $role = $request->param('role');
@@ -124,7 +121,5 @@ class Manage extends Common
 
         $result = $this->user->selectWhereData($where);
         $this->ajaxreturn(200, "查找成功", $result);
-
     }
-
 }
