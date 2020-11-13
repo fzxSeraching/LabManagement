@@ -11,11 +11,59 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 12/11/2020 18:07:04
+ Date: 13/11/2020 17:25:36
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for lab_facility
+-- ----------------------------
+DROP TABLE IF EXISTS `lab_facility`;
+CREATE TABLE `lab_facility`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facility_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `facility_id` varchar(0) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `facility_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `facility_state` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '未使用',
+  `facility_starttime` datetime(0) NULL DEFAULT NULL,
+  `facility_edittime` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for lab_facility_list
+-- ----------------------------
+DROP TABLE IF EXISTS `lab_facility_list`;
+CREATE TABLE `lab_facility_list`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facility_id` varchar(0) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `starttime` datetime(0) NULL DEFAULT NULL,
+  `repair_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `repair_state` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for lab_facility_state
+-- ----------------------------
+DROP TABLE IF EXISTS `lab_facility_state`;
+CREATE TABLE `lab_facility_state`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of lab_facility_state
+-- ----------------------------
+INSERT INTO `lab_facility_state` VALUES (1, 'FS001', '维修中');
+INSERT INTO `lab_facility_state` VALUES (2, 'FS002', '使用中');
+INSERT INTO `lab_facility_state` VALUES (3, 'FS003', '未使用');
+INSERT INTO `lab_facility_state` VALUES (4, 'FS004', '已报废');
 
 -- ----------------------------
 -- Table structure for lab_notice
