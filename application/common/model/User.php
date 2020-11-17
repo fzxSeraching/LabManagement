@@ -6,9 +6,9 @@
  * Date: 2020-10-19
  * Time: 13:27
  */
-namespace app\admin\model;
+namespace app\common\model;
 
-use app\admin\model\BaseModel;
+use app\common\model\BaseModel;
 
 class UserModel extends BaseModel
 {

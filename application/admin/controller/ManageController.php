@@ -8,18 +8,19 @@
 
 namespace app\admin\controller;
 
-use app\admin\model\UserModel;
+use app\common\controller\Common;
+use app\common\model\User;
 use think\Request;
 
 
-class Manage extends Common
+class ManageController extends Common
 {
 
     private $user;
 
     public function initialize()
     {
-        $this->user = new UserModel();
+        $this->user = new User();
     }
 
     // 用户的增加

@@ -6,7 +6,7 @@
  * Date: 2020-11-04
  * Time: 16:40
  */
-namespace app\admin\model;
+namespace app\common\model;
 
 use think\Model;
 

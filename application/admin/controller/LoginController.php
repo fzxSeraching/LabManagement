@@ -8,14 +8,13 @@
 
 namespace app\admin\controller;
 
-use app\admin\model\User;
-use think\Controller;
+use app\common\model\User;
 use think\Db;
 use think\Request;
-use app\admin\controller\common;
+use app\common\controller\common;
 
 
-class Login extends Controller
+class Login extends Common
 {
     // 登录
     public function signin()
