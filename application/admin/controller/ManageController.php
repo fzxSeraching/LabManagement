@@ -12,7 +12,6 @@ use app\common\controller\Common;
 use app\common\model\User;
 use think\Request;
 
-
 class ManageController extends Common
 {
 

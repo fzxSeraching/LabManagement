@@ -114,9 +114,9 @@ class baseModel extends Model
      *
      * where 想要查询的字段
      * */
-    public function selectMaxData($where = 'id')
+    public function selectMaxData($max = 'id', $where)
     {
-        $result = $this->max($where);
+        $result = $this->where($where)->max($max);
         return $result;
     }
 

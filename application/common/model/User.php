@@ -8,8 +8,6 @@
  */
 namespace app\common\model;
 
-use app\common\model\BaseModel;
-
 class UserModel extends BaseModel
 {
     public function selectWhereData($where = [])
@@ -17,11 +15,5 @@ class UserModel extends BaseModel
         $result = $this->where($where)->select();
         $re = $result->hidden(['user_pws']);
         return $re;
-    }
-
-    public function selectMaxData($max = 'id', $where)
-    {
-        $result = $this->where($where)->max($max);
-        return $result;
     }
 }
