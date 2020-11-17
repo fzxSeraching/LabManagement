@@ -111,7 +111,6 @@ class ManageController extends Common
     // 查找全部
     public function showAllStu(Request $request)
     {
-        $data = $request->param('data');
         $role = $request->param('role');
 
         $where = [["id", ">", "0"]];

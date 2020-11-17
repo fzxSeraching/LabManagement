@@ -10,7 +10,7 @@ namespace app\common\model;
 
 use think\Model;
 
-class baseModel extends Model
+class Base extends Model
 {
     /**
      * 添加数据

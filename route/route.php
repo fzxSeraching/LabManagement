@@ -34,7 +34,7 @@ Route::post('editfacility', 'admin/FacilityController/editFacility');
 Route::get('deletefacility', 'admin/FacilityController/deleteFacility');
 Route::get('selectfacility', 'admin/FacilityController/selectFacility');
 // 设备状态管理
-Route::post('addfacState', 'admin/FacilityStateController/addFacility');
-Route::post('editfacState', 'admin/FacilityStateController/editFacility');
-Route::get('deletefacState', 'admin/FacilityStateController/deleteFacility');
-Route::get('selectfacState', 'admin/FacilityStateController/selectFacility');
+Route::post('addfacState', 'admin/FacilityStateController/addState');
+Route::post('editfacState', 'admin/FacilityStateController/editState');
+Route::get('deletefacState', 'admin/FacilityStateController/deleteState');
+Route::get('selectfacState', 'admin/FacilityStateController/selectState');

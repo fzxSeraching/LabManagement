@@ -8,7 +8,7 @@
  */
 namespace app\common\model;
 
-class UserModel extends BaseModel
+class User extends Base
 {
     public function selectWhereData($where = [])
     {
