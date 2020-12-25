@@ -17,9 +17,10 @@ Route::get('hello/:name', 'index/hello');
 Route::get('signin', 'admin/Login/signin');
 Route::get('test', 'admin/Login/test');
 Route::get('register', 'admin/Login/register');
+Route::get('testtoken', 'admin/Manage/test');
 // 用户管理操作
-Route::get('allstu', 'admin/ManageController/showAllStu');
-Route::get('excelout', 'admin/ManageController/outStuWithExcel');
-Route::post('addstu', 'admin/ManageController/addStu');
-Route::post('editstu', 'admin/ManageController/editStu');
-Route::post('excelin', 'admin/ManageController/addStuWithExcel');
+Route::get('allstu', 'admin/Manage/showAllStu');
+Route::get('excelout', 'admin/Manage/outStuWithExcel');
+Route::post('addstu', 'admin/Manage/addStu');
+Route::post('editstu', 'admin/Manage/editStu');
+Route::post('excelin', 'admin/Manage/addStuWithExcel');

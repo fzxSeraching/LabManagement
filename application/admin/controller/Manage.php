@@ -10,9 +10,11 @@ namespace app\admin\controller;
 
 use app\common\controller\Common;
 use app\common\model\User;
+use app\common\TokenServe;
 use think\Request;
+use Firebase\JWT\JWT;
 
-class ManageController extends Common
+class Manage extends Common
 {
 
     private $user;

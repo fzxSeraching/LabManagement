@@ -9,6 +9,7 @@
 namespace app\common\controller;
 
 
+use app\common\TokenServe;
 use think\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -17,6 +18,8 @@ use think\Request;
 
 class Common extends Controller
 {
+    private $id;
+    private $roleid;
 
     public function initialize()
     {
@@ -25,6 +28,11 @@ class Common extends Controller
         Header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
         header("Cache-control: private");
         header('Content-type: application/json;charset=utf-8'); //设置文档格式为json
+
+        //Token 验证
+        $res = (new TokenServe)->checkToken();
+        $this->id = $res['id'];
+        $this->roleid = $res['role'];
     }
 
     // 返回函数
@@ -43,6 +51,7 @@ class Common extends Controller
     }
 
     // 数据的导入导出
+
     /**
      * 导出excel表
      * $data：要导出excel表的数据，接受一个二维数组
@@ -52,7 +61,7 @@ class Common extends Controller
      * 备注：此函数缺点是，表头（对应列数）不能超过26；
      *循环不够灵活，一个单元格中不方便存放两个数据库字段的值
      */
-    public function outdata($name = '测试表', $data = [], $head = [], $keys = [])
+    public function outdata($name = '数据导出表', $data = [], $head = [], $keys = [])
     {
         $count = count($head);  //计算表头数量
         $spreadsheet = new Spreadsheet();
