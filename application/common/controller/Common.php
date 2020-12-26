@@ -9,11 +9,13 @@
 namespace app\common\controller;
 
 
+use app\common\model\User;
 use app\common\TokenServe;
 use think\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use think\Db;
 use think\Request;
 
 class Common extends Controller
@@ -33,6 +35,10 @@ class Common extends Controller
         $res = (new TokenServe)->checkToken();
         $this->id = $res['id'];
         $this->roleid = $res['role'];
+        $now = (new User())->selectWhereData(['id'=>$this->id]);
+        if (!$now){
+            $this->ajaxreturn('1','token错误','error');
+        }
     }
 
     // 返回函数
