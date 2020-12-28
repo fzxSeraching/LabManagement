@@ -11,12 +11,10 @@ namespace app\common\controller;
 
 use app\common\model\User;
 use app\common\TokenServe;
-use think\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use think\Db;
-use think\Request;
+use think\Controller;
 
 class Common extends Controller
 {
@@ -29,16 +27,18 @@ class Common extends Controller
         Header('Access-Control-Allow-Origin: *');
         Header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
         header("Cache-control: private");
-        header('Content-type: application/json;charset=utf-8'); //设置文档格式为json
+        header('content-type:application:json;charset=utf8');
+        header('Access-Control-Allow-Methods:GET, POST, PUT, DELETE, OPTIONS');
+        header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
         //Token 验证
-        $res = (new TokenServe)->checkToken();
-        $this->id = $res['id'];
-        $this->roleid = $res['role'];
-        $now = (new User())->selectWhereData(['id'=>$this->id]);
-        if (!$now){
-            $this->ajaxreturn('1','token错误','error');
-        }
+//        $res = (new TokenServe)->checkToken();
+//        $this->id = $res['id'];
+//        $this->roleid = $res['role'];
+//        $now = (new User())->selectWhereData(['id'=>$this->id]);
+//        if (!$now){
+//            $this->ajaxreturn('1','token错误','error');
+//        }
     }
 
     // 返回函数

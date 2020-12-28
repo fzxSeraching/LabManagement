@@ -21,11 +21,8 @@ class Manage extends Common
 
     public function initialize()
     {
+        parent::initialize();
         $this->user = new User();
-//        Header('Access-Control-Allow-Origin: *');
-//        Header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-//        header("Cache-control: private");
-//        header('Content-type: application/json;charset=utf-8'); //设置文档格式为json
     }
 
     // 用户的增加
